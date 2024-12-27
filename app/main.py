@@ -5,7 +5,7 @@ def main():
      sys.stdout.write("$ ")
 
     # Wait for user input
-    input()
+    #input()
 
 
 if __name__ == "__main__":
