@@ -1,15 +1,17 @@
 import sys
+    
 
-
-def command():
-    sys.stdout.write("$ ")
-    command = input()
-    print(f"{command}: command not found")
 
 def main():
     while True:
-        command()
+        sys.stdout.write("$ ")
+        command = input()
+        splited_command = command.split()
+        if splited_command[0] == "exit":
+            return
+        print(f"{command}: command not found")
 
+        
 
 if __name__ == "__main__":
     main()
