@@ -17,7 +17,8 @@ def main():
             case "type":
                 typeBuiltin(command)
                 
-            case _: run(command)        
+            case _: run(command) 
+       
 
 def echo(command):
     string = command.split()
@@ -46,11 +47,12 @@ def typeBuiltin(command):
 
 def run(command):
     string = command.split()
-    path = shutil.which(string[1])
+    path = shutil.which(string[0])
     if path:
-        out = os.popen(f'{path} string[1:]')
+        out = os.popen(f'{path} {" ".join(string[1:])}').read()
         print(out)
-    print(f"{command}: command not found")  
+        return
+    print(f"{command}: command not found") 
 
 if __name__ == "__main__":
     main()
