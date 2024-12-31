@@ -1,5 +1,7 @@
 import sys
-  
+import os
+import shutil
+
 def main():
     while True:
         sys.stdout.write("$ ")
@@ -26,7 +28,7 @@ def echo(command):
 
 
 def typeBuiltin(command):
-    builtins = ["cd","echo", "exit", "ls" ,"rm","type"]
+    builtins = ["echo", "exit","type"]
     string = command.split()
     if len(string) < 2:
         return
@@ -34,6 +36,12 @@ def typeBuiltin(command):
         if string[1] == type:
             print(f'{type} is a shell builtin')
             return 
+    
+    path = shutil.which(string[1])
+    if path:
+        print(path)
+        return
+
     print(f"{string[1]}: not found")    
 
 if __name__ == "__main__":
